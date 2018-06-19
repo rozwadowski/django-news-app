@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html lang="pl">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Rozwadowski's site</title>
+		<meta name="description" content="Siotson">	
+		<meta name="keywords" content="Siotson">	
+		<meta name="author" content="Siotson">	
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />
+
+	</head>
+
+	<body>
+
+		<h1>News from Rozwadowski </h1>
+		<hr><hr>
+		<br>
+		<div id="tags">
+			<span id="tag"> All </span>
+			{% for entry in tags %}
+				<span id="tag"> {{ entry.name|safe }} </span>
+			{% endfor  %}	
+		</div>
+				
+			{% for entry in news %}
+				<div id="post">
+					<h3> {{ entry.title }}</h3>
+					<hr>
+					<h5> Published: {{ entry.posted_date|date:"Y.m.d H:i" }} | Tags: 
+						{% for t in tag %}
+							{% ifequal forloop.counter0 forloop.parentloop.counter0 %}
+								{% for tt in t %}
+									{{ tt }}
+								{% endfor %}
+							{% endifequal %}
+						{% endfor %}</h5>
+					<p> {{ entry.text|safe }} </p>
+				</div>
+			{% endfor  %}
+		
+				
+	</body>
+</html>

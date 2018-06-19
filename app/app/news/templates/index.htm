@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+
+<html lang="pl">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Rozwadowski's site</title>
+		<meta name="description" content="Siotson">	
+		<meta name="keywords" content="Siotson">	
+		<meta name="author" content="Siotson">	
+		<link rel="stylesheet" type="text/css" href="style.css" />
+
+	</head>
+
+	<body>
+
+		<h1>News from Rozwadowski </h1>
+		<hr><hr>
+		{% for entry in news %}
+			<h3> {{ entry.title }}</h3>
+			<h5> {{ entry.posted_date|date:"Y.m.d H:i" }}</h5>
+			<p> {{ entry.text|safe }} </p>
+			<hr>
+		{% endfor  %}
+		
+				
+	</body>
+</html>
